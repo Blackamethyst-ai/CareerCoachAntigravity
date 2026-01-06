@@ -1,5 +1,7 @@
 # Career Board Application
 
+[![Deployed on Vercel](https://img.shields.io/badge/Deployed%20on-Vercel-black?style=flat&logo=vercel)](https://vercel.com)
+
 ## A Human-AI Career Governance System
 
 **Purpose:** Catch career drift early by forcing receipts and decisions through structured AI-assisted accountability.
