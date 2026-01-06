@@ -801,3 +801,4 @@ Key customization points:
 - `lib/ai/tools.ts` — Add integrations for your tools
 - `lib/scheduler/cron.ts` — Change pulse frequency
 - `data/` — Swap JSON for your preferred storage
+# Last updated: 2026-01-06 10:53:17 UTC
