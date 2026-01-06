@@ -13,7 +13,7 @@
     "test": "vitest"
   },
   "dependencies": {
-    "@anthropic-ai/sdk": "^0.32.0",
+    "@anthropic-ai/sdk": "^0.71.2",
     "ai": "^6.0.11",
     "autoprefixer": "^10.4.0",
     "clsx": "^2.1.0",
