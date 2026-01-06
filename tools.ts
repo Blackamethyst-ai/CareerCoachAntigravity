@@ -254,7 +254,7 @@ export const toolHandlers = {
   }): Promise<ToolResult> {
     // Integration with Google Calendar / Outlook
     // Returns: { success: true, data: { entries: [...], count: N } }
-    
+
     // TODO: Implement calendar API integration
     return {
       success: false,
@@ -269,10 +269,10 @@ export const toolHandlers = {
   }): Promise<ToolResult> {
     // Integration with Drive, Notion, GitHub, etc.
     // Returns: { success: true, data: { files: [...], count: N } }
-    
+
     // TODO: Implement document source integrations
     const results: any[] = [];
-    
+
     for (const source of params.sources) {
       switch (source) {
         case 'drive':
@@ -289,7 +289,7 @@ export const toolHandlers = {
           break;
       }
     }
-    
+
     return {
       success: true,
       data: { files: results, count: results.length },
@@ -304,7 +304,7 @@ export const toolHandlers = {
   }): Promise<ToolResult> {
     // Schedule notification via email, push, or in-app
     // Returns: { success: true, data: { scheduledFor: Date, id: string } }
-    
+
     // TODO: Implement notification scheduling
     return {
       success: true,
@@ -325,20 +325,20 @@ export const toolHandlers = {
   }): Promise<ToolResult> {
     // Store receipt in database
     // Returns: { success: true, data: { id: string, strength: ReceiptStrength } }
-    
-    const strength: ReceiptStrength = 
+
+    const strength: ReceiptStrength =
       params.type === 'decision' || params.type === 'artifact' ? 'strong' :
-      params.type === 'proxy' ? 'medium' : 'weak';
-    
+        params.type === 'proxy' ? 'medium' : 'weak';
+
     const receipt = {
       id: `receipt_${Date.now()}`,
       ...params,
       strength,
       createdAt: new Date().toISOString(),
     };
-    
+
     // TODO: Save to database
-    
+
     return {
       success: true,
       data: receipt,
@@ -352,9 +352,9 @@ export const toolHandlers = {
   }): Promise<ToolResult> {
     // Update bet in database
     // Returns: { success: true, data: { bet: Bet } }
-    
+
     // TODO: Load bet, update, save
-    
+
     return {
       success: true,
       data: {
@@ -374,7 +374,7 @@ export const toolHandlers = {
   }): Promise<ToolResult> {
     // Create drift alert
     // Returns: { success: true, data: { alertId: string } }
-    
+
     const alert = {
       id: `drift_${Date.now()}`,
       ...params,
@@ -382,9 +382,9 @@ export const toolHandlers = {
       createdAt: new Date().toISOString(),
       acknowledged: false,
     };
-    
+
     // TODO: Save alert, potentially notify user
-    
+
     return {
       success: true,
       data: alert,
@@ -394,7 +394,7 @@ export const toolHandlers = {
   async get_portfolio(): Promise<ToolResult> {
     // Load portfolio from database
     // TODO: Implement database read
-    
+
     return {
       success: true,
       data: {
@@ -408,7 +408,7 @@ export const toolHandlers = {
   async get_active_bet(): Promise<ToolResult> {
     // Load current bet from database
     // TODO: Implement database read
-    
+
     return {
       success: true,
       data: null, // or current bet
@@ -420,7 +420,7 @@ export const toolHandlers = {
   }): Promise<ToolResult> {
     // Load avoided decisions from database
     // TODO: Implement database read
-    
+
     return {
       success: true,
       data: [],
@@ -436,15 +436,16 @@ export async function executeTool(
   toolName: string,
   params: Record<string, any>
 ): Promise<ToolResult> {
-  const handler = toolHandlers[toolName as keyof typeof toolHandlers];
-  
+  const handlers: Record<string, (params: any) => Promise<ToolResult>> = toolHandlers;
+  const handler = handlers[toolName];
+
   if (!handler) {
     return {
       success: false,
       error: `Unknown tool: ${toolName}`,
     };
   }
-  
+
   try {
     return await handler(params);
   } catch (error) {
