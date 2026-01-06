@@ -1,13 +1,13 @@
 import Anthropic from '@anthropic-ai/sdk';
 import { NextRequest, NextResponse } from 'next/server';
-import { WEEKLY_PROMPT, QUICK_AUDIT_PROMPT, SETUP_PROMPT, QUARTERLY_PROMPT } from '../../../../prompts';
+import { WEEKLY_PULSE_PROMPT, QUICK_AUDIT_PROMPT, SETUP_PROMPT, QUARTERLY_PROMPT } from '@/prompts';
 
 const anthropic = new Anthropic({
     apiKey: process.env.ANTHROPIC_API_KEY,
 });
 
 const SYSTEM_PROMPTS: Record<string, string> = {
-    weekly: WEEKLY_PROMPT,
+    weekly: WEEKLY_PULSE_PROMPT,
     quick_audit: QUICK_AUDIT_PROMPT,
     setup: SETUP_PROMPT,
     quarterly: QUARTERLY_PROMPT,
