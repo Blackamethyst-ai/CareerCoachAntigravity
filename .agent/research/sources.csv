@@ -1,0 +1,7 @@
+Source,URL,Focus,Innovation
+CAPER (2408.15620),https://arxiv.org/abs/2408.15620,"Ternary Relationship (User-Pos-Comp)","Temporal Knowledge Graphs using GCN/GRNN encoders for next-move prediction."
+CareerScape (2509.19677),https://arxiv.org/abs/2509.19677,Multi-layer Heterogeneous Graphs,"Global graph context check to detect fake or unrealistic career transitions."
+TraceTop Repository,https://github.com/ArcCherry/TraceTop,Skill Tech-Trees,"AI-driven 'Growth Philosophy' using behavior embeddings to map milestones."
+OpenResume Dataset,https://github.com/mickeymst/openresume,Graph Benchmarking,Standardized dataset for training career trajectory models.
+React Flow (XYFlow),https://www.xyflow.com/,UI Visualization,Optimized node-based interactive graph for large scale career pathing.
+Sigma.js,https://sigmajs.org/,Large-scale Rendering,WebGL-based rendering for 10k+ node skill networks.

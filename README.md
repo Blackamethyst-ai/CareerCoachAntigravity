@@ -1,10 +1,24 @@
-# Career Board Application
+# Career Board: Antigravity
 
-[![Deployed on Vercel](https://img.shields.io/badge/Deployed%20on-Vercel-black?style=flat&logo=vercel)](https://vercel.com)
+[![Agentic Status: Active](https://img.shields.io/badge/Agentic%20Status-Active-00C853?style=for-the-badge&logo=robot)](./.agent/README.md)
+[![Innovation: Scouted](https://img.shields.io/badge/Innovation-Scouted-7C4DFF?style=for-the-badge&logo=sparkles)](./.agent/subagent_logs.md)
+[![Deployed on Vercel](https://img.shields.io/badge/Deployed%20on-Vercel-000000?style=for-the-badge&logo=vercel)](https://vercel.com)
 
 ## A Human-AI Career Governance System
-
 **Purpose:** Catch career drift early by forcing receipts and decisions through structured AI-assisted accountability.
+
+> **🤖 Agent-Ready Repository**: This codebase includes a dedicated [Agent Context](./.agent/README.md) to help LLMs understand and navigate the project structure instantly.
+
+---
+
+## ⚡️ Dynamic Agentic Context
+*This section evolves as the project grows.*
+
+| Context Layer | Status | Link |
+| :--- | :--- | :--- |
+| **Cognitive State** | 🟢 Online | [.agent/README.md](./.agent/README.md) |
+| **Research Memory** | 🧠 Updated | [.agent/subagent_logs.md](./.agent/subagent_logs.md) |
+| **Workflows** | 3 Active | `/deep-research`, `/innovation-scout`, `/remember` |
 
 ---
 

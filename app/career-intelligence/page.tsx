@@ -19,6 +19,8 @@ import {
     Linkedin,
     MessageSquare,
 } from 'lucide-react';
+import SkillGraphCanvas from './components/SkillGraphCanvas';
+import './skill-graph.css';
 
 // Types
 interface SkillNode {
@@ -271,60 +273,66 @@ export default function CareerIntelligencePage() {
                         <div className="p-6 rounded-2xl bg-gray-900/50 border border-gray-800 backdrop-blur-xl">
                             <h2 className="flex items-center gap-2 text-lg font-semibold text-white mb-4">
                                 <Network className="w-5 h-5 text-purple-400" />
-                                GNN-Style Skill Navigation
+                                Interactive Skill Graph Navigator
                             </h2>
                             <p className="text-gray-400 text-sm mb-6">
-                                Based on LinkedIn STAR&apos;s approach: skills connect through co-occurrence in jobs, profiles, and learning paths. Find adjacent skills and optimal learning paths.
+                                <strong>Innovation Upgrade:</strong> Utilizing Ternary Relationships (User &harr; Position &harr; Company) from latest arXiv research.
+                                Drag and drop nodes to explore career trajectories and skill adjacencies.
                             </p>
 
-                            {/* Skill Selection */}
-                            <div className="mb-6">
-                                <label className="block text-sm font-medium text-gray-300 mb-2">Your Skills (click to toggle)</label>
-                                <div className="flex flex-wrap gap-2">
-                                    {availableSkills.map(skill => (
-                                        <button
-                                            key={skill.id}
-                                            onClick={() => toggleSkill(skill.id)}
-                                            className={`px-3 py-1.5 rounded-lg text-sm transition-all ${candidateSkills.includes(skill.id)
-                                                ? 'bg-purple-600 text-white'
-                                                : 'bg-gray-800 text-gray-400 hover:text-white'
-                                                }`}
-                                        >
-                                            {skill.name}
-                                            {skill.growthRate > 20 && (
-                                                <TrendingUp className="w-3 h-3 inline-block ml-1 text-emerald-400" />
-                                            )}
-                                        </button>
-                                    ))}
+                            {/* New Interactive Canvas */}
+                            <div className="mb-8">
+                                <SkillGraphCanvas />
+                            </div>
+
+                            {/* Skill Selection (Adjusted for UI balance) */}
+                            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                <div>
+                                    <label className="block text-sm font-medium text-gray-300 mb-2">My Skill Inventory</label>
+                                    <div className="flex flex-wrap gap-2">
+                                        {availableSkills.map(skill => (
+                                            <button
+                                                key={skill.id}
+                                                onClick={() => toggleSkill(skill.id)}
+                                                className={`px-3 py-1.5 rounded-lg text-sm transition-all ${candidateSkills.includes(skill.id)
+                                                    ? 'bg-purple-600 text-white'
+                                                    : 'bg-gray-800 text-gray-400 hover:text-white'
+                                                    }`}
+                                            >
+                                                {skill.name}
+                                                {skill.growthRate > 20 && (
+                                                    <TrendingUp className="w-3 h-3 inline-block ml-1 text-emerald-400" />
+                                                )}
+                                            </button>
+                                        ))}
+                                    </div>
+                                </div>
+
+                                <div>
+                                    <label className="block text-sm font-medium text-gray-300 mb-2">Target Trajectory</label>
+                                    <input
+                                        type="text"
+                                        value={targetSkills}
+                                        onChange={(e) => setTargetSkills(e.target.value)}
+                                        placeholder="Enter goal roles or skills..."
+                                        className="w-full px-4 py-2.5 rounded-lg bg-gray-900/50 border border-gray-700 text-gray-200 placeholder-gray-500 focus:outline-none focus:border-purple-500/50 text-sm mb-4"
+                                    />
+                                    <button
+                                        onClick={analyzeSkillGraph}
+                                        disabled={isLoading || candidateSkills.length === 0}
+                                        className="w-full flex items-center justify-center gap-2 px-6 py-3 rounded-xl bg-gradient-to-r from-purple-600 to-pink-600 text-white font-semibold shadow-lg shadow-purple-500/25 hover:shadow-purple-500/40 disabled:opacity-50 transition-all"
+                                    >
+                                        {isLoading ? (
+                                            <div className="w-5 h-5 border-2 border-white/30 border-t-white rounded-full animate-spin" />
+                                        ) : (
+                                            <>
+                                                <Target className="w-5 h-5" />
+                                                Run Alignment Engine
+                                            </>
+                                        )}
+                                    </button>
                                 </div>
                             </div>
-
-                            {/* Target Skills */}
-                            <div className="mb-6">
-                                <label className="block text-sm font-medium text-gray-300 mb-2">Target Job Skills (comma-separated)</label>
-                                <input
-                                    type="text"
-                                    value={targetSkills}
-                                    onChange={(e) => setTargetSkills(e.target.value)}
-                                    placeholder="react, typescript, aws"
-                                    className="w-full px-4 py-2.5 rounded-lg bg-gray-900/50 border border-gray-700 text-gray-200 placeholder-gray-500 focus:outline-none focus:border-purple-500/50 text-sm"
-                                />
-                            </div>
-
-                            <button
-                                onClick={analyzeSkillGraph}
-                                disabled={isLoading || candidateSkills.length === 0}
-                                className="w-full flex items-center justify-center gap-2 px-6 py-3 rounded-xl bg-gradient-to-r from-purple-600 to-pink-600 text-white font-semibold shadow-lg shadow-purple-500/25 hover:shadow-purple-500/40 disabled:opacity-50 transition-all"
-                            >
-                                {isLoading ? (
-                                    <div className="w-5 h-5 border-2 border-white/30 border-t-white rounded-full animate-spin" />
-                                ) : (
-                                    <>
-                                        <GitBranch className="w-5 h-5" />
-                                        Analyze Skill Coverage
-                                    </>
-                                )}
-                            </button>
                         </div>
 
                         {/* Skill Coverage Results */}
