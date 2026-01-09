@@ -78,6 +78,12 @@ export default function Dashboard() {
                     </div>
                     <div className="flex items-center gap-3">
                         <span className="text-sm text-muted-foreground">{formatQuarter()}</span>
+                        <Link href="/career-intelligence">
+                            <Button variant="outline" className="border-purple-500/50 hover:border-purple-500">
+                                <Zap className="w-4 h-4 mr-2 text-purple-400" />
+                                Intelligence
+                            </Button>
+                        </Link>
                         <Link href="/interview-prep">
                             <Button variant="outline">
                                 <Brain className="w-4 h-4 mr-2" />
