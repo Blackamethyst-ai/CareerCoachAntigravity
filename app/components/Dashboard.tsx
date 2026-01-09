@@ -20,7 +20,8 @@ import {
     Zap,
     FileText,
     BarChart3,
-    Sparkles
+    Sparkles,
+    Brain
 } from 'lucide-react';
 
 export default function Dashboard() {
@@ -77,6 +78,12 @@ export default function Dashboard() {
                     </div>
                     <div className="flex items-center gap-3">
                         <span className="text-sm text-muted-foreground">{formatQuarter()}</span>
+                        <Link href="/interview-prep">
+                            <Button variant="outline">
+                                <Brain className="w-4 h-4 mr-2" />
+                                Interview Prep
+                            </Button>
+                        </Link>
                         <Link href="/resume-builder">
                             <Button variant="outline">
                                 <Sparkles className="w-4 h-4 mr-2" />
