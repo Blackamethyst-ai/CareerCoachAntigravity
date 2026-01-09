@@ -1,0 +1,257 @@
+# Target Criteria Template
+# Define your ideal role parameters for job matching
+
+# ============================================
+# VISA & WORK AUTHORIZATION (If Applicable)
+# ============================================
+# Put this first if it's a hard filter
+
+visa:
+  applicable: false  # Set to true if visa is a factor
+  current_status: ""  # e.g., "Canadian Citizen", "F-1 OPT", "H1-B"
+  work_authorization: ""  # e.g., "TN Visa Eligible", "EAD", "Green Card"
+  requirement: ""  # e.g., "Company must sponsor TN Visa"
+  is_non_negotiable: true  # If true, auto-reject jobs that don't sponsor
+
+# ============================================
+# ROLE TARGETING
+# ============================================
+
+role:
+  # Primary titles you're targeting (priority order)
+  target_titles:
+    - ""
+    - ""
+    - ""
+  
+  # Alternative titles that match your profile
+  alternate_titles:
+    - ""
+    - ""
+  
+  # Seniority level
+  level:
+    target: ""  # Entry, Mid, Senior, Lead, Principal, Director, VP, C-level
+    minimum: ""
+    maximum: ""
+  
+  # Function/department
+  functions:
+    - ""
+    - ""
+
+# ============================================
+# COMPANY PREFERENCES
+# ============================================
+
+company:
+  # Tiered targeting
+  dream_tier:
+    - ""
+    - ""
+  
+  strong_fit:
+    - ""
+    - ""
+  
+  # Size preferences
+  size:
+    preferred:
+      - ""  # Startup (<50), Growth (50-500), Mid-market (500-2000), Enterprise (2000+)
+    open_to:
+      - ""
+    avoid:
+      - ""
+  
+  # Industry preferences
+  industries:
+    required:
+      - ""
+    open_to:
+      - ""
+    avoid:
+      - ""
+  
+  # Stage preferences (for startups)
+  stage:
+    preferred:
+      - ""  # Pre-seed, Seed, Series A/B/C, Growth, Public
+    open_to:
+      - ""
+  
+  # Culture signals to look for
+  culture_must_have:
+    - ""
+  
+  culture_preferred:
+    - ""
+
+# ============================================
+# LOCATION & WORK ARRANGEMENT
+# ============================================
+
+location:
+  current_location: ""  # Your current city (for internal reference)
+  
+  # What to display on resume (strategic framing)
+  resume_display: ""  # e.g., "Open to Relocation: SF, NYC | Remote"
+  
+  # Target cities
+  target_cities:
+    - ""
+    - ""
+  
+  # Work arrangement
+  arrangement:
+    preferred: ""  # Remote, Hybrid, On-site
+    acceptable:
+      - ""
+    avoid:
+      - ""
+  
+  # Timezone
+  timezone:
+    current: ""
+    acceptable_range: ""  # e.g., "EST -3 to PST"
+  
+  # Relocation
+  relocation:
+    willing: false
+    for_cities:
+      - ""
+  
+  # Travel tolerance
+  travel:
+    max_percentage: 0
+    max_frequency: ""  # Monthly, Quarterly, Rarely
+
+# ============================================
+# COMPENSATION
+# ============================================
+
+compensation:
+  currency: "USD"
+  
+  base_salary:
+    target: 0
+    minimum: 0
+    maximum: 0
+  
+  total_compensation:
+    target: 0  # Including bonus, equity
+    minimum: 0
+  
+  equity:
+    important: false
+    notes: ""
+  
+  bonus:
+    expected_percentage: 0
+  
+  benefits_priorities:
+    - ""
+    - ""
+
+# ============================================
+# ROLE REQUIREMENTS
+# ============================================
+
+requirements:
+  # Must-haves — will not accept role without these
+  non_negotiables:
+    - ""
+    - ""
+  
+  # Strong preferences — heavily weight but not absolute
+  preferred:
+    - ""
+    - ""
+  
+  # Dealbreakers — will reject role if present
+  dealbreakers:
+    - ""
+    - ""
+
+# ============================================
+# GROWTH & DEVELOPMENT
+# ============================================
+
+growth:
+  # Skills you want to develop
+  skills_to_grow:
+    - ""
+    - ""
+  
+  # Career trajectory
+  near_term_goal: ""   # 1-2 years
+  mid_term_goal: ""    # 3-5 years
+  long_term_goal: ""   # 5+ years
+
+# ============================================
+# POSITIONING STRATEGY
+# ============================================
+
+positioning:
+  # Your compound value proposition
+  unique_combination:
+    - ""  # e.g., "Enterprise scale experience"
+    - ""  # e.g., "Technical depth in AI"
+  
+  # Key differentiators to emphasize
+  differentiators:
+    - ""
+    - ""
+  
+  # Proof points to highlight
+  proof_points:
+    - ""
+    - ""
+  
+  # Short pitch (1 sentence)
+  elevator_pitch: ""
+  
+  # Medium pitch (2-3 sentences)
+  summary_pitch: ""
+
+# ============================================
+# ANTI-PATTERNS (What NOT to Apply For)
+# ============================================
+
+avoid:
+  role_types:
+    - ""
+    - ""
+  
+  red_flag_signals:
+    - ""
+    - ""
+
+# ============================================
+# MATCH SCORING WEIGHTS
+# ============================================
+
+scoring_weights:
+  # Customize importance (should sum to 100)
+  visa_sponsorship: 0   # Set high if visa is required
+  role_fit: 25
+  company_tier: 20
+  compensation: 15
+  location_fit: 15
+  growth_potential: 15
+  culture_signals: 10
+
+# ============================================
+# AUTO FILTERS
+# ============================================
+
+filters:
+  # Minimum match score to consider applying
+  minimum_score: 50
+  
+  # Flag for manual review (don't auto-reject, but highlight)
+  flag_for_review:
+    - ""
+  
+  # Auto-reject if any of these present
+  auto_reject:
+    - ""

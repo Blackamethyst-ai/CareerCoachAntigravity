@@ -1,0 +1,201 @@
+# Target Criteria: Dico Angelo
+# Optimized for US AI companies with TN Visa sponsorship
+
+# ============================================
+# ROLE TARGETING
+# ============================================
+
+role:
+  target_titles:
+    - "Technical Program Manager"
+    - "AI Operations Manager"
+    - "GTM Systems Lead"
+    - "Partner Solutions Manager"
+    - "AI/ML Program Manager"
+  
+  alternate_titles:
+    - "Revenue Operations Manager"
+    - "Developer Relations"
+    - "Solutions Architect"
+    - "Strategic Partnerships Manager"
+    - "Platform Operations"
+    - "AI Infrastructure PM"
+  
+  level:
+    target: "Senior"
+    minimum: "Mid"
+    maximum: "Lead/Principal"
+  
+  functions:
+    - "Technical Program Management"
+    - "AI Operations"
+    - "GTM Systems / Revenue Operations"
+    - "Partner Ecosystems"
+    - "Developer Experience"
+
+# ============================================
+# COMPANY PREFERENCES
+# ============================================
+
+company:
+  dream_tier:
+    - "Anthropic"
+    - "OpenAI"
+    - "NVIDIA"
+    - "SpaceX"
+  
+  strong_fit:
+    - "Scale AI"
+    - "Databricks"
+    - "Cohere"
+    - "Notion"
+    - "Figma"
+    - "Vercel"
+    - "Stripe"
+    - "Runway"
+    - "Mistral"
+    - "Hugging Face"
+  
+  industries:
+    required:
+      - "AI/ML"
+      - "Developer Tools"
+      - "Cloud Infrastructure"
+      - "Deep Tech"
+    open_to:
+      - "Enterprise SaaS"
+      - "Robotics"
+      - "Aerospace"
+  
+  stage:
+    preferred:
+      - "Series C+"
+      - "Growth"
+      - "Public"
+    open_to:
+      - "Series B"
+  
+  culture_signals:
+    must_have:
+      - "Cutting-edge technology"
+      - "Builder culture"
+      - "High agency individuals"
+      - "Research-driven"
+    preferred:
+      - "Remote-friendly"
+      - "Async communication"
+      - "Learning culture"
+
+# ============================================
+# LOCATION & VISA
+# ============================================
+
+location:
+  current: "Canada"
+  
+  target_cities:
+    - "San Francisco, CA"
+    - "New York, NY"
+    - "Austin, TX"
+    - "Boston, MA"
+    - "Toronto, ON"
+  
+  arrangement:
+    preferred: "Remote"
+    acceptable: 
+      - "Hybrid"
+      - "On-site in target cities"
+  
+  relocation:
+    willing: true
+    for_right_opportunity: true
+
+visa:
+  status: "Canadian Citizen"
+  authorization: "TN Visa Eligible (USMCA)"
+  requirement: "MUST SPONSOR TN VISA"
+  note: "Non-negotiable — state upfront in applications"
+
+# ============================================
+# ROLE REQUIREMENTS
+# ============================================
+
+requirements:
+  non_negotiables:
+    - "TN Visa sponsorship"
+    - "Technical or systems-focused scope"
+    - "Cutting-edge AI/tech environment"
+    - "Growth trajectory"
+  
+  strong_preferences:
+    - "Cross-functional scope"
+    - "Bridge technology and business"
+    - "Research or builder component"
+    - "Strategic impact visibility"
+  
+  dealbreakers:
+    - "Quota-carrying sales role"
+    - "Pure closing/AE position"
+    - "Legacy tech stack"
+    - "No visa sponsorship"
+    - "Non-technical operations"
+
+# ============================================
+# STRENGTHS TO LEVERAGE
+# ============================================
+
+positioning:
+  compound_stack:
+    enterprise_scale: "Contentsquare — $800M TCV cloud alliances"
+    technical_depth: "Metaventions — AI stack, agentic workflows"
+    bridge: "Technology × Processes × People"
+  
+  differentiators:
+    - "Rare combo: enterprise partnerships + hands-on AI technical"
+    - "Research-driven builder who ships"
+    - "Cloud alliances (AWS/MSFT) + AI tooling proficiency"
+    - "Systems thinker with cross-functional execution"
+  
+  proof_points:
+    - "$800M+ TCV managed"
+    - "40% cloud attachment rate"
+    - "$222K annual cost savings"
+    - "7,425 hours/year time savings"
+    - "$255K grants secured"
+  
+  narrative:
+    short: "Technical operator bridging AI systems and partner ecosystems"
+    medium: "From $800M cloud alliances to building agentic architectures. Research-driven builder who ships."
+    full: "Technical operator who bridges AI systems, infrastructure, and cross-functional teams. Proven at enterprise scale managing $800M+ in cloud partnerships. Now building agentic architectures. Research-driven builder who translates frontier AI into production systems."
+
+# ============================================
+# ANTI-PATTERNS (What NOT to Apply For)
+# ============================================
+
+avoid:
+  roles:
+    - "Account Executive"
+    - "Sales Representative"
+    - "Business Development (quota-carrying)"
+    - "Customer Success (reactive support)"
+    - "Pure Admin/Coordinator"
+  
+  signals:
+    - "Commission-heavy comp"
+    - "Quota requirements"
+    - "Cold calling expectations"
+    - "No technical component"
+    - "Visa sponsorship not available"
+
+# ============================================
+# MATCH SCORING WEIGHTS
+# ============================================
+
+scoring_weights:
+  visa_sponsorship: 100  # Non-negotiable — instant disqualify if no
+  role_fit: 25
+  company_tier: 20
+  technical_scope: 20
+  growth_potential: 15
+  location_match: 10
+  culture_signals: 10

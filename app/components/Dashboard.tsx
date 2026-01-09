@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
+import Link from 'next/link';
 import { useCareerBoardStore } from '@/lib/store';
 import { getDirectionIcon, getReceiptStrengthColor, formatQuarter } from '@/lib/utils';
 import { Card, CardHeader, CardTitle, CardContent } from './ui/Card';
@@ -18,7 +19,8 @@ import {
     MessageSquare,
     Zap,
     FileText,
-    BarChart3
+    BarChart3,
+    Sparkles
 } from 'lucide-react';
 
 export default function Dashboard() {
@@ -75,6 +77,12 @@ export default function Dashboard() {
                     </div>
                     <div className="flex items-center gap-3">
                         <span className="text-sm text-muted-foreground">{formatQuarter()}</span>
+                        <Link href="/resume-builder">
+                            <Button variant="outline">
+                                <Sparkles className="w-4 h-4 mr-2" />
+                                Resume Builder
+                            </Button>
+                        </Link>
                         <Button onClick={toggleChat} variant="default">
                             <MessageSquare className="w-4 h-4 mr-2" />
                             Weekly Pulse
@@ -106,8 +114,8 @@ export default function Dashboard() {
                                             <span className="font-medium text-foreground">{problem.name}</span>
                                         </div>
                                         <span className={`text-sm capitalize ${problem.classification === 'appreciating' ? 'text-success' :
-                                                problem.classification === 'depreciating' ? 'text-destructive' :
-                                                    'text-warning'
+                                            problem.classification === 'depreciating' ? 'text-destructive' :
+                                                'text-warning'
                                             }`}>
                                             {problem.classification}
                                         </span>
