@@ -1,7 +1,7 @@
 import { useCareerBoardStore } from './store';
 import { parseProfile } from './resume-builder/profile-parser';
 import { analyzeSkillPortfolio } from './career-intelligence/skill-graph';
-import { POSITIONING_PLAYBOOK } from './playbooks/positioning_playbook';
+import { MasterProfile } from './resume-builder/types';
 
 /**
  * NEXUS ENGINE
@@ -47,9 +47,9 @@ export const nexus = {
      * Ingests a Job Description and immediately generates a "Convergence Play".
      */
     ingestTarget: (jobText: string) => {
-        const store = useCareerBoardStore.getState();
-        // Logic to run Chameleon Engine + Gap Analysis dynamically
+        // Placeholder for future implementation
         // This is where we'd call the LLM to 'crystallize' a tailored resume
+        console.log(`Ingesting job description: ${jobText.substring(0, 50)}...`);
         return {
             // Placeholder for the "Gem" - the perfect tailored resume
             tailoredResume: "Generated...",
@@ -59,8 +59,8 @@ export const nexus = {
 };
 
 // Helper: Simple heuristic to guess where user is in the playbook
-function determinePlaybookPhase(profile: any): string {
+function determinePlaybookPhase(profile: MasterProfile): string {
     if (profile.skills.length < 5) return "Phase 1: The Foundation";
-    if (!profile.summaryArchetypes || profile.summaryArchetypes.length === 0) return "Phase 4: The Pivot (Needs Archetype)";
+    if (!profile.chameleonValues) return "Phase 4: The Pivot (Needs Archetype)";
     return "Phase 5: Sniper Conversion";
 }

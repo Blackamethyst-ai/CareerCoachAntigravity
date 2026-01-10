@@ -8,7 +8,7 @@ interface ArchetypeSelectorProps {
 }
 
 export function ArchetypeSelector({ selected, onChange }: ArchetypeSelectorProps) {
-    const archetypes: { id: Archetype; label: string; icon: any; color: string; desc: string }[] = [
+    const archetypes: { id: Archetype; label: string; icon: React.ElementType; color: string; desc: string }[] = [
         {
             id: 'general',
             label: 'General',
@@ -57,8 +57,8 @@ export function ArchetypeSelector({ selected, onChange }: ArchetypeSelectorProps
                         key={type.id}
                         onClick={() => onChange(type.id)}
                         className={`p-3 rounded-xl border transition-all flex flex-col items-center justify-center gap-2 text-center h-24 ${selected === type.id
-                                ? `bg-${type.color.split('-')[1]}/10 border-${type.color.split('-')[1]} ring-1 ring-${type.color.split('-')[1]}`
-                                : 'bg-gray-900/50 border-gray-800 hover:bg-gray-800'
+                            ? `bg-${type.color.split('-')[1]}/10 border-${type.color.split('-')[1]} ring-1 ring-${type.color.split('-')[1]}`
+                            : 'bg-gray-900/50 border-gray-800 hover:bg-gray-800'
                             }`}
                     >
                         <type.icon className={`w-5 h-5 ${selected === type.id ? type.color : 'text-gray-500'}`} />
