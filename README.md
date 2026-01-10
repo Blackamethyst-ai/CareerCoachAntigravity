@@ -64,8 +64,16 @@ career-board/
 │   │   └── integrations/
 │   │       ├── calendar.ts    # Google/Outlook calendar
 │   │       ├── documents.ts   # File processing
-│   │       └── notifications.ts
-│   └── page.tsx
+│   │       ├── notifications.ts
+│   │       └── career-intelligence/ # Career analyics module (New)
+│   │           ├── skill-graph.ts   # Skill network & gaps
+│   │           ├── linkedin-signals.ts
+│   │           └── response-embeddings.ts
+│   ├── page.tsx
+│   ├── resume-builder/        # Chameleon Engine & Resume Tools
+│   │   └── page.tsx
+│   └── career-intelligence/   # Positioning Playbook & Strategy
+│       └── page.tsx
 ├── data/
 │   ├── portfolio.json         # Problem portfolio storage
 │   ├── board-roles.json       # Board role definitions
@@ -166,6 +174,28 @@ interface AvoidedDecision {
   surfacedAt: Date;
   resolvedAt?: Date;
   resolution?: string;
+}
+```
+
+### Chameleon Engine
+
+```typescript
+interface ChameleonMetrics {
+  metric: string;
+  original: string;
+  rewritten: string;
+  archetype: 'speed' | 'safety' | 'ecosystem' | 'creative' | 'general';
+}
+```
+
+### Skill Graph
+
+```typescript
+interface SkillNode {
+  id: string;
+  category: SkillCategory;
+  demandScore: number;
+  growthRate: number;
 }
 ```
 
@@ -394,6 +424,29 @@ If avoided decision has been mentioned 2+ times with no movement:
 → Call send_reminder for 1 week out
 → Note in session that reminder was set
 ```
+
+---
+
+## Career Intelligence Module
+
+### 1. Positioning Playbook
+- **Interactive Strategy Anchor**: A digital implementation of "The Ultimate Power of Positioning."
+- **Phase Navigation**: Step-by-step roadmap from "Foundation" to "Sniper Conversion."
+- **Data Logging**: Acts as a central data source for strategic alignment.
+
+### 2. Chameleon Engine (Resume Builder)
+- **Narrative Switcher**: Dynamically rewrites resume metrics for specific target cultures.
+- **Archetypes**:
+  - ⚡️ **Speed (xAI)**: Friction removal & velocity
+  - 🛡️ **Safety (Anthropic)**: Governance & reliability
+  - 🧠 **Creative (DeepMind)**: Innovation & prototyping
+  - 🌐 **Ecosystem (Nvidia)**: Network effects & scale
+- **LLM Integration**: Uses `claude-3-5-sonnet` to perform context-aware metric pivots.
+
+### 3. Skill Graph Navigator
+- **GNN-Style Mapping**: Visualizes skills as nodes with "gravity" (demand) and "velocity" (growth).
+- **Gap Analysis**: Identifies missing skills for target roles.
+- **Bridge Building**: Suggests adjacent skills to bridge gaps efficiently.
 
 ---
 
