@@ -65,10 +65,11 @@ career-board/
 │   │       ├── calendar.ts    # Google/Outlook calendar
 │   │       ├── documents.ts   # File processing
 │   │       ├── notifications.ts
-│   │       └── career-intelligence/ # Career analyics module (New)
+│   │       ├── career-intelligence/ # Career analyics module (New)
 │   │           ├── skill-graph.ts   # Skill network & gaps
 │   │           ├── linkedin-signals.ts
 │   │           └── response-embeddings.ts
+│   │       └── nexus.ts             # The Invention Layer (Weaving Engine)
 │   ├── page.tsx
 │   ├── resume-builder/        # Chameleon Engine & Resume Tools
 │   │   └── page.tsx
@@ -447,6 +448,14 @@ If avoided decision has been mentioned 2+ times with no movement:
 - **GNN-Style Mapping**: Visualizes skills as nodes with "gravity" (demand) and "velocity" (growth).
 - **Gap Analysis**: Identifies missing skills for target roles.
 - **Bridge Building**: Suggests adjacent skills to bridge gaps efficiently.
+
+### 4. The Invention Layer (Nexus Engine)
+- **Concept**: A background process that "weaves" disparate data (profile, skills, job market gaps) into a crystallized strategic asset.
+- **Workflow**: 
+  1. **Ingest**: Takes raw chaotic data (Resume, Job Description).
+  2. **Weave**: Runs Skill Graph analysis + Positioning Playbook logic in parallel.
+  3. **Crystallize**: Outputs a "Strategic Gem" (e.g., a perfectly tailored narrative or a gap-closing plan).
+- **Visualization**: Represented by the floating **Nexus Indicator** in the UI (`components/NexusIndicator.tsx`).
 
 ---
 
