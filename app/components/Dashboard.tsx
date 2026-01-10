@@ -1,9 +1,9 @@
 'use client';
 
-import React, { useState } from 'react';
+import React from 'react';
 import Link from 'next/link';
 import { useCareerBoardStore } from '@/lib/store';
-import { getDirectionIcon, getReceiptStrengthColor, formatQuarter } from '@/lib/utils';
+import { getReceiptStrengthColor, formatQuarter } from '@/lib/utils';
 import { Card, CardHeader, CardTitle, CardContent } from './ui/Card';
 import { Button } from './ui/Button';
 import Chat from './Chat';
@@ -159,7 +159,7 @@ export default function Dashboard() {
                                 <div className="space-y-4">
                                     <div className="p-4 rounded-lg bg-secondary/50 border-l-4 border-primary">
                                         <p className="text-foreground font-medium leading-relaxed">
-                                            "{activeBet.prediction}"
+                                            &quot;{activeBet.prediction}&quot;
                                         </p>
                                     </div>
                                     <div className="p-3 rounded-lg bg-destructive/10 border border-destructive/20">

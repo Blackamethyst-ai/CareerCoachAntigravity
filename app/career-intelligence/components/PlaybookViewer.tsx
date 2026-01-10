@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
-import { Book, ChevronRight, CheckCircle, Target, Shield, Zap, Network } from 'lucide-react';
+import { Book, ChevronRight, Target, Shield, Zap, Network } from 'lucide-react';
 import { POSITIONING_PLAYBOOK } from '@/lib/playbooks/positioning_playbook';
 
 const ICONS = {
@@ -26,8 +26,8 @@ export default function PlaybookViewer() {
                         key={phase.id}
                         onClick={() => setSelectedPhase(phase)}
                         className={`w-full text-left p-4 rounded-xl border transition-all ${selectedPhase.id === phase.id
-                                ? 'bg-purple-600/20 border-purple-500/50 text-white'
-                                : 'bg-gray-900/50 border-gray-800 text-gray-400 hover:bg-gray-800 hover:text-gray-200'
+                            ? 'bg-purple-600/20 border-purple-500/50 text-white'
+                            : 'bg-gray-900/50 border-gray-800 text-gray-400 hover:bg-gray-800 hover:text-gray-200'
                             }`}
                     >
                         <div className="flex items-center justify-between mb-1">
@@ -71,7 +71,7 @@ export default function PlaybookViewer() {
 
                                 {step.example && typeof step.example === 'string' && (
                                     <div className="ml-8 text-sm text-gray-400 italic border-l-2 border-gray-600 pl-3">
-                                        "{step.example}"
+                                        &quot;{step.example}&quot;
                                     </div>
                                 )}
 
@@ -123,7 +123,7 @@ export default function PlaybookViewer() {
                                     <div>
                                         <div className="text-xs text-gray-500 uppercase tracking-wider mb-1">The Narrative</div>
                                         <div className="text-sm text-gray-300 italic border-l-2 border-purple-500 pl-3">
-                                            "{play.narrative}"
+                                            &quot;{play.narrative}&quot;
                                         </div>
                                     </div>
                                 </div>

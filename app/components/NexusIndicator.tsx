@@ -2,7 +2,7 @@
 
 import React from 'react';
 import { useCareerBoardStore } from '@/lib/store';
-import { Loader2, Sparkles, Network } from 'lucide-react';
+import { Sparkles, Network } from 'lucide-react';
 
 export function NexusIndicator() {
     const nexusState = useCareerBoardStore(state => state.nexusState);
