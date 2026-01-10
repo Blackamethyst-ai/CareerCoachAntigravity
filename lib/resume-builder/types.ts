@@ -49,13 +49,22 @@ export interface MasterProfile {
   experience: string[];
   yearsExperience: number;
   certifications?: string[];
-  summaryArchetypes?: SummaryArchetype[];
+  // New: Chameleon Engine
+  chameleonValues?: {
+    speed?: string;
+    safety?: string;
+    ecosystem?: string;
+    creative?: string;
+  }
 }
 
-export interface SummaryArchetype {
-  name: string;
-  type: 'technical' | 'operations' | 'strategy' | 'frontier';
-  content: string;
+export type Archetype = 'speed' | 'safety' | 'ecosystem' | 'creative' | 'general';
+
+export interface ChameleonMetrics {
+  metric: string;
+  original: string;
+  rewritten: string;
+  archetype: Archetype;
 }
 
 export interface MatchReport {
@@ -63,8 +72,10 @@ export interface MatchReport {
   company: string;
   result: MatchResult;
   generatedAt: string;
-  selectedArchetype?: string;
-  tailoredSummary?: string;
+
+  // Chameleon Engine Output
+  chameleonMetrics?: ChameleonMetrics[];
+  selectedArchetype?: Archetype;
 }
 
 export interface ScoreDimension {
@@ -90,3 +101,24 @@ export const MATCH_TIERS = {
   WEAK_MATCH: { min: 25, label: 'Weak Match', color: 'orange', emoji: '🟡' },
   NO_MATCH: { min: 0, label: 'No Match', color: 'destructive', emoji: '🚫' },
 } as const;
+
+export interface AnalysisResponse {
+  success: boolean;
+  result: MatchResult;
+  report: string;
+  profile: {
+    name: string;
+    skillsCount: number;
+    experienceCount: number;
+    yearsExperience: number;
+  };
+  job: {
+    title: string;
+    company: string;
+    requirementsCount: number;
+    yearsRequired?: number;
+  };
+  // Chameleon additions
+  chameleonMetrics?: ChameleonMetrics[];
+  archetype?: Archetype;
+}

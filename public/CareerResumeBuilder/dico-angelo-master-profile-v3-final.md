@@ -214,8 +214,6 @@ Mar 2019 – 2022 | (3 yrs)
 **University of Windsor** – Odette School of Business  
 Graduated 2019
 
-**⚠️ CRITICAL: This is an undergraduate honours degree, NOT an MBA.**
-
 **Notable Experiences:**
 
 **University of Windsor Hyperloop**
@@ -456,13 +454,3 @@ Avoid: quota, closing, AE, commission, sales targets.
 
 ---
 
-## DOCUMENTS TO FIX
-
-The following NotebookLM source documents contain the **incorrect MBA claim** and need correction:
-
-1. "Career Case Study: The Path of a Tech Operations Architect" — Page 1
-2. Any other uploaded resumes/cover letters with "Master of Business Administration"
-
-**Find and replace:**
-- ❌ "Master of Business Administration (MBA), Specialization in Marketing"
-- ✅ "Honours Business Administration, Marketing Specialization"

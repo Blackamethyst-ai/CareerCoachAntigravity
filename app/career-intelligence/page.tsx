@@ -18,8 +18,10 @@ import {
     Activity,
     Linkedin,
     MessageSquare,
+    Book,
 } from 'lucide-react';
 import SkillGraphCanvas from './components/SkillGraphCanvas';
+import PlaybookViewer from './components/PlaybookViewer';
 import './skill-graph.css';
 
 // Types
@@ -76,7 +78,7 @@ export default function CareerIntelligencePage() {
     const [targetSkills, setTargetSkills] = useState('react, typescript, aws');
     const [candidateSkills, setCandidateSkills] = useState<string[]>([]);
     const [isLoading, setIsLoading] = useState(false);
-    const [activeTab, setActiveTab] = useState<'skill-graph' | 'linkedin' | 'combo'>('skill-graph');
+    const [activeTab, setActiveTab] = useState<'skill-graph' | 'linkedin' | 'combo' | 'playbook'>('skill-graph');
 
     // Results
     const [skillCoverage, setSkillCoverage] = useState<SkillCoverage | null>(null);
@@ -264,6 +266,16 @@ export default function CareerIntelligencePage() {
                     >
                         <Sparkles className="w-4 h-4" />
                         Combo Moves
+                    </button>
+                    <button
+                        onClick={() => setActiveTab('playbook')}
+                        className={`flex items-center gap-2 px-4 py-2 rounded-lg font-medium transition-all ${activeTab === 'playbook'
+                            ? 'bg-emerald-600 text-white shadow-lg shadow-emerald-500/25'
+                            : 'bg-gray-800 text-gray-400 hover:text-white'
+                            }`}
+                    >
+                        <Book className="w-4 h-4" />
+                        Playbook
                     </button>
                 </div>
 
@@ -519,6 +531,22 @@ export default function CareerIntelligencePage() {
                                 </div>
                             </div>
                         )}
+                    </div>
+                )}
+
+                {/* Playbook Tab */}
+                {activeTab === 'playbook' && (
+                    <div className="space-y-6">
+                        <div className="p-6 rounded-2xl bg-gray-900/50 border border-gray-800 backdrop-blur-xl">
+                            <h2 className="flex items-center gap-2 text-lg font-semibold text-white mb-4">
+                                <Book className="w-5 h-5 text-emerald-400" />
+                                The Ultimate Power of Positioning Playbook
+                            </h2>
+                            <p className="text-gray-400 text-sm mb-6">
+                                A repeatable framework for generating simultaneous job offers by orchestrating Mastery, Clarity, and Volume.
+                            </p>
+                            <PlaybookViewer />
+                        </div>
                     </div>
                 )}
 

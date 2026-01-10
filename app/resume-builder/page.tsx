@@ -18,46 +18,16 @@ import {
     Upload,
     ChevronDown,
     ChevronUp,
+    RefreshCw,
 } from 'lucide-react';
-
-interface MatchResult {
-    keywordScore: number;
-    experienceScore: number;
-    skillsScore: number;
-    impactScore: number;
-    recencyScore: number;
-    cultureScore: number;
-    totalScore: number;
-    matchTier: string;
-    keywordsMatched: string[];
-    keywordsMissing: string[];
-    skillsMatched: string[];
-    skillsMissing: string[];
-    experienceDirect: string[];
-    experienceTransferable: string[];
-    experienceGaps: string[];
-    overqualified: boolean;
-    underqualified: boolean;
-    recommendations: string[];
-}
-
-interface AnalysisResponse {
-    success: boolean;
-    result: MatchResult;
-    report: string;
-    profile: {
-        name: string;
-        skillsCount: number;
-        experienceCount: number;
-        yearsExperience: number;
-    };
-    job: {
-        title: string;
-        company: string;
-        requirementsCount: number;
-        yearsRequired?: number;
-    };
-}
+import { ArchetypeSelector } from './components/ArchetypeSelector';
+import {
+    Archetype,
+    ChameleonMetrics,
+    MatchResult,
+    AnalysisResponse
+} from '@/lib/resume-builder/types';
+import { ScoreBar } from './components/ScoreBar';
 
 // Default master profile - loaded from CareerResumeBuilder
 const DEFAULT_PROFILE_PATH = '/CareerResumeBuilder/dico-angelo-master-profile-v3-final.md';
@@ -76,7 +46,9 @@ export default function ResumeBuilderPage() {
         keywords: false,
         skills: false,
         experience: false,
+        chameleon: true,
     });
+    const [selectedArchetype, setSelectedArchetype] = useState<Archetype>('general');
 
     // Load default profile on mount
     useEffect(() => {
@@ -115,6 +87,7 @@ export default function ResumeBuilderPage() {
                     jobText,
                     jobTitle: jobTitle || undefined,
                     company: company || undefined,
+                    archetype: selectedArchetype,
                 }),
             });
 
@@ -145,30 +118,7 @@ export default function ResumeBuilderPage() {
         }
     };
 
-    const ScoreBar = ({ label, score, weight }: { label: string; score: number; weight: number }) => {
-        const weighted = score * weight;
-        const getScoreColor = (s: number) => {
-            if (s >= 75) return 'bg-emerald-500';
-            if (s >= 50) return 'bg-amber-500';
-            if (s >= 25) return 'bg-orange-500';
-            return 'bg-red-500';
-        };
 
-        return (
-            <div className="space-y-1">
-                <div className="flex justify-between text-sm">
-                    <span className="text-gray-400">{label}</span>
-                    <span className="text-white font-medium">{score.toFixed(0)}% <span className="text-gray-500">({(weight * 100).toFixed(0)}%)</span></span>
-                </div>
-                <div className="h-2 bg-gray-800 rounded-full overflow-hidden">
-                    <div
-                        className={`h-full ${getScoreColor(score)} transition-all duration-500`}
-                        style={{ width: `${Math.min(100, score)}%` }}
-                    />
-                </div>
-            </div>
-        );
-    };
 
     const toggleSection = (section: string) => {
         setExpandedSections(prev => ({ ...prev, [section]: !prev[section] }));
@@ -280,6 +230,11 @@ export default function ResumeBuilderPage() {
                             </div>
                         )}
 
+                        {/* Archetype Selector */}
+                        <div className="lg:col-span-2">
+                            <ArchetypeSelector selected={selectedArchetype} onChange={setSelectedArchetype} />
+                        </div>
+
                         {/* Analyze Button */}
                         <div className="lg:col-span-2 flex justify-center">
                             <button
@@ -290,12 +245,12 @@ export default function ResumeBuilderPage() {
                                 {isLoading ? (
                                     <>
                                         <div className="w-5 h-5 border-2 border-white/30 border-t-white rounded-full animate-spin" />
-                                        Analyzing...
+                                        Analyzing ({selectedArchetype} mode)...
                                     </>
                                 ) : (
                                     <>
                                         <Sparkles className="w-5 h-5 group-hover:animate-pulse" />
-                                        Analyze Match
+                                        Run Chameleon Engine
                                         <Zap className="w-4 h-4" />
                                     </>
                                 )}
@@ -305,6 +260,74 @@ export default function ResumeBuilderPage() {
                 ) : (
                     /* Results View */
                     <div className="space-y-6 animate-fade-in">
+                        {/* Chameleon Insights (if active) */}
+                        {result.chameleonMetrics && result.chameleonMetrics.length > 0 && (
+                            <div className="p-6 rounded-2xl bg-gradient-to-r from-gray-900 via-gray-900 to-slate-900 border border-gray-800 relative overflow-hidden group">
+                                <div className={`absolute top-0 left-0 w-1 h-full ${result.archetype === 'speed' ? 'bg-yellow-500' :
+                                    result.archetype === 'safety' ? 'bg-orange-500' :
+                                        result.archetype === 'creative' ? 'bg-emerald-500' :
+                                            result.archetype === 'ecosystem' ? 'bg-blue-500' : 'bg-gray-500'
+                                    }`} />
+
+                                <button
+                                    onClick={() => toggleSection('chameleon')}
+                                    className="w-full flex items-center justify-between relative z-10"
+                                >
+                                    <div className="flex items-center gap-3">
+                                        <div className={`p-2 rounded-lg ${result.archetype === 'speed' ? 'bg-yellow-500/20 text-yellow-400' :
+                                            result.archetype === 'safety' ? 'bg-orange-500/20 text-orange-400' :
+                                                result.archetype === 'creative' ? 'bg-emerald-500/20 text-emerald-400' :
+                                                    result.archetype === 'ecosystem' ? 'bg-blue-500/20 text-blue-400' : 'bg-gray-500/20 text-gray-400'
+                                            }`}>
+                                            <RefreshCw className="w-5 h-5" />
+                                        </div>
+                                        <div className="text-left">
+                                            <h3 className="text-lg font-bold text-white flex items-center gap-2">
+                                                Chameleon Engine Active
+                                                <span className="text-xs px-2 py-1 rounded-full bg-white/10 uppercase tracking-wider font-mono">
+                                                    {result.archetype} MODE
+                                                </span>
+                                            </h3>
+                                            <p className="text-xs text-gray-400">
+                                                Narrative automatically reframed for {result.archetype} culture
+                                            </p>
+                                        </div>
+                                    </div>
+                                    {expandedSections.chameleon ? (
+                                        <ChevronUp className="w-5 h-5 text-gray-500" />
+                                    ) : (
+                                        <ChevronDown className="w-5 h-5 text-gray-500" />
+                                    )}
+                                </button>
+
+                                {expandedSections.chameleon && (
+                                    <div className="mt-6 space-y-4 relative z-10 pl-12">
+                                        {result.chameleonMetrics.map((m, i) => (
+                                            <div key={i} className="p-4 rounded-xl bg-black/40 border border-white/5">
+                                                <div className="text-xs text-gray-500 mb-1 uppercase tracking-wider">Original Metric</div>
+                                                <div className="text-sm text-gray-400 mb-3 strike-through opacity-70">{m.original}</div>
+
+                                                <div className="flex items-center gap-2 mb-1">
+                                                    <Sparkles className={`w-3 h-3 ${result.archetype === 'speed' ? 'text-yellow-400' :
+                                                        result.archetype === 'safety' ? 'text-orange-400' :
+                                                            result.archetype === 'creative' ? 'text-emerald-400' : 'text-blue-400'
+                                                        }`} />
+                                                    <div className={`text-xs font-bold uppercase tracking-wider ${result.archetype === 'speed' ? 'text-yellow-400' :
+                                                        result.archetype === 'safety' ? 'text-orange-400' :
+                                                            result.archetype === 'creative' ? 'text-emerald-400' : 'text-blue-400'
+                                                        }`}>
+                                                        Rewritten for Impact
+                                                    </div>
+                                                </div>
+                                                <div className="text-base text-white font-medium">
+                                                    &quot;{m.rewritten}&quot;
+                                                </div>
+                                            </div>
+                                        ))}
+                                    </div>
+                                )}
+                            </div>
+                        )}
                         {/* Score Overview */}
                         <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
                             {/* Main Score Card */}
@@ -531,8 +554,9 @@ export default function ResumeBuilderPage() {
                             </button>
                         </div>
                     </div>
-                )}
-            </main>
+                )
+                }
+            </main >
 
             <style jsx>{`
         @keyframes fade-in {
@@ -543,6 +567,6 @@ export default function ResumeBuilderPage() {
           animation: fade-in 0.5s ease-out;
         }
       `}</style>
-        </div>
+        </div >
     );
 }
