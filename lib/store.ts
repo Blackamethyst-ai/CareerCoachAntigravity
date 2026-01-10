@@ -46,10 +46,20 @@ interface CareerBoardState {
     avoidedDecisions: AvoidedDecision[];
     messages: Message[];
 
+    // Nexus Engine (The Invention Layer)
+    masterProfile: string | null;
+    nexusState: {
+        matches: any[];
+        gaps: string[];
+        strategicMoves: string[];
+        status: 'idle' | 'weaving' | 'crystallized';
+    };
+
     // UI State
     isChatOpen: boolean;
     currentSession: 'quick_audit' | 'setup' | 'quarterly' | 'weekly' | null;
     isLoading: boolean;
+
 
     // Actions
     setProblems: (problems: Problem[]) => void;
@@ -62,6 +72,10 @@ interface CareerBoardState {
     addMessage: (message: Omit<Message, 'id' | 'timestamp'>) => void;
     clearMessages: () => void;
     setLoading: (loading: boolean) => void;
+
+    // Nexus Actions
+    setMasterProfile: (text: string) => void;
+    updateNexusState: (partial: Partial<CareerBoardState['nexusState']>) => void;
 }
 
 export const useCareerBoardStore = create<CareerBoardState>((set) => ({
@@ -154,4 +168,17 @@ export const useCareerBoardStore = create<CareerBoardState>((set) => ({
     })),
     clearMessages: () => set({ messages: [] }),
     setLoading: (isLoading) => set({ isLoading }),
+
+    // Nexus Actions
+    masterProfile: null,
+    nexusState: {
+        matches: [],
+        gaps: [],
+        strategicMoves: [],
+        status: 'idle'
+    },
+    setMasterProfile: (text) => set({ masterProfile: text }),
+    updateNexusState: (partial) => set((state) => ({
+        nexusState: { ...state.nexusState, ...partial }
+    })),
 }));
