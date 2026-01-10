@@ -56,6 +56,13 @@ export interface MasterProfile {
     ecosystem?: string;
     creative?: string;
   }
+  summaryArchetypes?: SummaryArchetype[];
+}
+
+export interface SummaryArchetype {
+  name: string;
+  type: 'technical' | 'operations' | 'strategy' | 'frontier';
+  content: string;
 }
 
 export type Archetype = 'speed' | 'safety' | 'ecosystem' | 'creative' | 'general';
